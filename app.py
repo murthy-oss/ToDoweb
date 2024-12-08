@@ -21,6 +21,9 @@ def get_todo_items():
     return jsonify({
         "todoItems": items_list
     })
+@app.route("/")
+def home():
+    return "Welcome to the app!"
 
 
 @app.post("/add_todo_item")
