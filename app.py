@@ -13,11 +13,11 @@ from config import *
 app = Flask(__name__)
 CORS(app)
 
-client = MongoClient(os.getenv("MONGODB_CONNECTION_STRING"))
+client = MongoClient(os.getenv("MONGO_URI"),)
 database = client[MONGODB_DATABASE_NAME]
 items_collection = database[MONGODB_TODO_ITEMS_COLLECTION]
 
-@app.get("/get_todo_items")
+@app.route("/get_todo_items",methods=['GET'])
 def get_todo_items():
     try:
         items_list = items_collection.find()
